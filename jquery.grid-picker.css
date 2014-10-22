@@ -1,0 +1,46 @@
+.grid, .grid * {
+  box-sizing: border-box;
+}
+
+.grid-picker + .grid {
+    width: 120px;
+    height: 120px;
+    background: rgba(0,0,0,0.2);
+    position: relative;
+    padding: 2px;
+    display: none;
+}
+
+.grid-picker:focus + .grid {
+   display: block;
+}
+
+.grid-picker + .grid .row:first-child .square:first-child .inner {
+   background: rgba(0,0,0,0.4);
+}
+
+.grid-picker + .grid .square:first-child {
+    margin-top: 0;
+}
+
+.grid-picker + .grid .row {
+    height: calc(100%/5);
+}
+.grid-picker + .grid .square {
+    height: 100%;
+    width: calc(100%/5);
+
+    display: inline-block;
+    margin: -2px 0;
+    padding: 1px;
+}
+.grid-picker + .grid .square:hover .inner, .grid-picker + .grid .square.highlight .inner {
+    background: rgba(0,0,0,0.4)
+}
+
+.grid-picker .inner {
+    height: 100%;
+    width: 100%;
+    border-radius: 3px;
+    background: rgba(0,0,0,0.2);
+}

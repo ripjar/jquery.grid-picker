@@ -1,0 +1,28 @@
+{
+  "name": "grid-picker",
+  "version": "0.1.0",
+  "authors": [
+    "jivings <james.ivings@ripjar.com>"
+  ],
+  "description": "jQuery plugin for picking a column and row layout",
+  "main": "jquery.grid-picker.js",
+  "keywords": [
+    "jquery",
+    "grid",
+    "plugin",
+    "picker",
+    "columns",
+    "rows"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1"
+  }
+}
