@@ -27,6 +27,12 @@
 
                 listen: function () {
                     this.$grid.on('mouseover', '.square', $.proxy(this.selectSquares, this));
+                    this.$el.on('blur', $.proxy(this.set, this));
+                    return this;
+                },
+
+                set: function () {
+                    this.$el.trigger('change');
                     return this;
                 },
 
