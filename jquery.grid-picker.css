@@ -3,20 +3,15 @@
 }
 
 .grid-picker + .grid {
-    width: 120px;
-    height: 120px;
-    background: rgba(0,0,0,0.2);
-    position: relative;
+    background: #6B6B70;
     padding: 2px;
     display: none;
+    position: absolute;
+    z-index: 999;
 }
 
 .grid-picker:focus + .grid {
    display: block;
-}
-
-.grid-picker + .grid .row:first-child .square:first-child .inner {
-   background: rgba(0,0,0,0.4);
 }
 
 .grid-picker + .grid .square:first-child {
@@ -25,15 +20,17 @@
 
 .grid-picker + .grid .square {
     height: 100%;
-    display: inline-block;
-    margin: -2px 0;
+    float: left;
     padding: 1px;
 }
-.grid-picker + .grid .square:hover .inner, .grid-picker + .grid .square.highlight .inner {
+
+.grid-picker + .grid .square:hover .inner,
+.grid-picker + .grid .square.highlight .inner,
+.grid-picker + .grid .grid-row:first-child .square:first-child .inner {
     background: rgba(0,0,0,0.4)
 }
 
-.grid-picker .inner {
+.grid-picker + .grid .inner {
     height: 100%;
     width: 100%;
     border-radius: 3px;

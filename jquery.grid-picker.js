@@ -26,23 +26,24 @@
                 },
 
                 listen: function () {
-                    $grid.on('mouseover', '.square', $.proxy(this.selectSquares));
+                    this.$grid.on('mouseover', '.square', $.proxy(this.selectSquares, this));
                     return this;
                 },
 
-                selectSquares: function () {
-                    var col = this.$el.index() + 1;
-                    var row = this.$el.parent().index() + 1;
-                    $allSquares.removeClass('highlight');
-                    $('.row:nth-child(-n+'+row+') .square:nth-child(-n+'+col+')')
+                selectSquares: function (e) {
+                    var $this = $(e.currentTarget);
+                    var col = $this.index() + 1;
+                    var row = $this.parent().index() + 1;
+                    this.$allSquares.removeClass('highlight');
+                    $('.grid-row:nth-child(-n+'+row+') .square:nth-child(-n+'+col+')')
                         .addClass('highlight');
-                     this.$el.val(col + ' x ' + row)
-                })
+                     this.$el.val(col + ' x ' + row);
+                },
 
                 createGrid: function () {
                     var grid = '<div class="grid">';
                     for (var i = 0; i < this.settings.rows; i++) {
-                        grid += '<div class="row">';
+                        grid += '<div class="grid-row">';
                         for (var c = 0; c < this.settings.cols; c++) {
                             grid += '<div class="square"><div class="inner"></div></div>';
                         }
@@ -51,14 +52,17 @@
                     grid += '</div>';
 
                     this.$grid = $(grid)
+                        .height(this.settings.rows * 24)
+                        .width(this.settings.cols * 24)
                         .insertAfter(this.$el);
-                    $grid.find('.row').css({
-                        height: 'calc(100%/'+rows+')'
+
+                    this.$grid.find('.grid-row').css({
+                        height: 'calc(100%/'+this.settings.rows+')'
                     });
-                    $grid.find('.square').css({
-                        width: 'calc(100%/'+cols+')'
+                    this.$grid.find('.square').css({
+                        width: 'calc(100%/'+this.settings.cols+')'
                     });
-                    this.$allSquares = $grid.find('.square');
+                    this.$allSquares = this.$grid.find('.square');
                     return this;
                 }
 
@@ -76,8 +80,3 @@
         };
 
 })( jQuery );
-
-
-
-
-
