@@ -52,6 +52,12 @@
 
                     this.$grid = $(grid)
                         .insertAfter(this.$el);
+                    $grid.find('.row').css({
+                        height: 'calc(100%/'+rows+')'
+                    });
+                    $grid.find('.square').css({
+                        width: 'calc(100%/'+cols+')'
+                    });
                     this.$allSquares = $grid.find('.square');
                     return this;
                 }

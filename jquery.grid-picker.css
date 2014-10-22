@@ -23,13 +23,8 @@
     margin-top: 0;
 }
 
-.grid-picker + .grid .row {
-    height: calc(100%/5);
-}
 .grid-picker + .grid .square {
     height: 100%;
-    width: calc(100%/5);
-
     display: inline-block;
     margin: -2px 0;
     padding: 1px;
