@@ -20,30 +20,55 @@
         $.extend(Plugin.prototype, {
 
                 init: function () {
-                    this.$el.addClass('grid-picker')
+                    this.$el.addClass('grid-picker');
                     this.createGrid();
+                    // if the input is prepopulated then select the squares up front
+                    this.previousValue = this.$el.val();
+
+                    this.highlightSquares();
                     this.listen();
                 },
 
                 listen: function () {
-                    this.$grid.on('mouseover', '.square', $.proxy(this.selectSquares, this));
+                    this.$grid.on('mouseover', '.square', $.proxy(this.hoverSquare, this));
                     this.$el.on('blur', $.proxy(this.set, this));
                     return this;
                 },
 
                 set: function () {
+                    var newVal = this.$el.val();
+                    if (newVal === this.previousValue) return;
+                    this.previousValue = newVal;
                     this.$el.trigger('change');
                     return this;
                 },
 
-                selectSquares: function (e) {
+                hoverSquare: function (e) {
                     var $this = $(e.currentTarget);
                     var col = $this.index() + 1;
                     var row = $this.parent().index() + 1;
+                    this.highlightSquares({
+                        col: col,
+                        row: row
+                    });
+                    this.$el.val(col + ' x ' + row);
+                    return this;
+                },
+
+                getSelected: function () {
+                    var values = this.$el.val().split(' x ');
+                    return {
+                        col: values[0], // width
+                        row: values[1]  // height
+                    };
+                },
+
+                highlightSquares: function (values) {
+                    if (!values) values = this.getSelected();
                     this.$allSquares.removeClass('highlight');
-                    $('.grid-row:nth-child(-n+'+row+') .square:nth-child(-n+'+col+')')
+                    $('.grid-row:nth-child(-n+'+values.row+') .square:nth-child(-n+'+values.col+')')
                         .addClass('highlight');
-                     this.$el.val(col + ' x ' + row);
+                    return this;
                 },
 
                 createGrid: function () {
