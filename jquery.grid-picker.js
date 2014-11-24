@@ -30,8 +30,32 @@
                 },
 
                 listen: function () {
+                    this.$grid.on('mouseenter', $.proxy(this.enter, this));
+                    this.$grid.on('mouseleave', $.proxy(this.leave, this));
                     this.$grid.on('mouseover', '.square', $.proxy(this.hoverSquare, this));
-                    this.$el.on('blur', $.proxy(this.set, this));
+                    this.$el.on('blur', $.proxy(this.blur, this));
+                    return this;
+                },
+
+                enter: function () {
+                    this.mouseoverGrid = true;
+                    return this;
+                },
+
+                leave: function () {
+                    this.mouseoverGrid = false;
+                    return this;
+                },
+
+                blur: function () {
+                    // if the mouse is over the picker
+                    return this.mouseoverGrid ? this.set() : this.reset();
+                },
+
+                // reset to what the picker showed before, and don't trigger
+                // a change
+                reset: function () {
+                    this.$el.val(this.previousValue);
                     return this;
                 },
 
