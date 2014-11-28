@@ -1,0 +1,38 @@
+{
+  "name": "grid-picker",
+  "version": "0.1.4",
+  "authors": [
+    "jivings <james.ivings@ripjar.com>"
+  ],
+  "description": "jQuery plugin for picking a column and row layout",
+  "main": "jquery.grid-picker.js",
+  "keywords": [
+    "jquery",
+    "grid",
+    "plugin",
+    "picker",
+    "columns",
+    "rows"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1"
+  },
+  "homepage": "https://github.com/Jivings/jquery.grid-picker",
+  "_release": "0.1.4",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.1.4",
+    "commit": "0e3e577b72bcf6dbfc4297e4aab4940ea42c245a"
+  },
+  "_source": "git://github.com/Jivings/jquery.grid-picker.git",
+  "_target": "*",
+  "_originalSource": "grid-picker"
+}

@@ -1,0 +1,38 @@
+.grid, .grid * {
+  box-sizing: border-box;
+}
+
+.grid {
+    background: #6B6B70;
+    padding: 2px;
+    display: none;
+    position: absolute;
+    z-index: 9999;
+}
+
+.grid.visible {
+   display: block;
+}
+
+.grid .square:first-child {
+    margin-top: 0;
+}
+
+.grid .square {
+    height: 100%;
+    float: left;
+    padding: 1px;
+}
+
+.grid .square:hover .inner,
+.grid .square.highlight .inner,
+.grid .grid-row:first-child .square:first-child .inner {
+    background: rgba(0,0,0,0.4)
+}
+
+.grid .inner {
+    height: 100%;
+    width: 100%;
+    border-radius: 3px;
+    background: rgba(0,0,0,0.2);
+}
