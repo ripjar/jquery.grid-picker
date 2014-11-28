@@ -12,7 +12,9 @@
                 this.element = element;
                 this.$el = $(element);
                 this.settings = $.extend( {}, defaults, options );
+
                 this.$container = $(this.settings.container);
+
                 this._defaults = defaults;
                 this._name = pluginName;
                 this.init();
@@ -26,6 +28,7 @@
                     this.createGrid();
                     // if the input is prepopulated then select the squares up front
                     this.previousValue = this.$el.val();
+
                     this.highlightSquares();
                     this.listen();
                 },
@@ -43,7 +46,6 @@
                     this.$container.on('scroll resize', $.proxy(this.move, this));
                     $(window).on('scroll resize', $.proxy(this.move, this));
                     this.$el.parent().on('scroll', $.proxy(this.move, this));
-
                     return this;
                 },
 
@@ -145,6 +147,7 @@
                     });
                     this.$allSquares = this.$grid.find('.square');
                     return this;
+
                 },
 
                 move: function () {
@@ -163,8 +166,6 @@
                     });
                     return this;
                 }
-
-
         });
 
         $.fn[ pluginName ] = function ( options ) {
