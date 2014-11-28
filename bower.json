@@ -22,6 +22,10 @@
     "test",
     "tests"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ripjar/jquery.grid-picker.git"
+  },
   "dependencies": {
     "jquery": "~2.1.1"
   }
