@@ -165,6 +165,23 @@
                         left: left + 1
                     });
                     return this;
+                },
+
+                destroy : function(){
+                    this.$grid
+                        .off('mouseenter')
+                        .off('mouseleave')
+                        .off('mouseover');
+
+                    this.$el
+                        .off('focus')
+                        .off('blur');
+
+                    this.$container.off('scroll resize');
+                    $(window).off('scroll resize');
+                    this.$el.parent().off('scroll');
+
+                    this.$grid.remove();
                 }
         });
 
