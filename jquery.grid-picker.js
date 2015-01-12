@@ -34,6 +34,7 @@
                 },
 
                 listen: function () {
+
                     this.$grid
                         .on('mouseenter', $.proxy(this.enter, this))
                         .on('mouseleave', $.proxy(this.leave, this))
@@ -44,8 +45,9 @@
                         .on('blur', $.proxy(this.blur, this));
 
                     this.$container.on('scroll resize', $.proxy(this.move, this));
-                    $(window).on('scroll resize', $.proxy(this.move, this));
-                    this.$el.parent().on('scroll', $.proxy(this.move, this));
+                    this.proxiedMoveFn = $.proxy(this.move, this);
+                    $(window).on('scroll resize', this.proxiedMoveFn);
+                    this.$el.parent().on('scroll', this.proxiedMoveFn);
                     return this;
                 },
 
@@ -178,8 +180,8 @@
                         .off('blur');
 
                     this.$container.off('scroll resize');
-                    $(window).off('scroll resize');
-                    this.$el.parent().off('scroll');
+                    $(window).off('scroll resize', this.proxiedMoveFn);
+                    this.$el.parent().off('scroll', this.proxiedMoveFn);
 
                     this.$grid.remove();
                 }
