@@ -135,8 +135,8 @@
                     grid += '</div>';
 
                     this.$grid = $(grid)
-                        .height(this.settings.rows * 24)
-                        .width(this.settings.cols * 24);
+                        .height((this.settings.rows * 24) / 2)
+                        .width((this.settings.cols * 24) / 2);
 
 
                     this.$grid.appendTo(this.$container);
