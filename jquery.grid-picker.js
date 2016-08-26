@@ -188,13 +188,14 @@
         });
 
         $.fn[ pluginName ] = function ( options ) {
+        		var pluginRef = this;
                 this.each(function() {
                         if ( !$.data( this, pluginName ) ) {
-                                $.data( this, pluginName, new Plugin( this, options ) );
+                                pluginRef = $.data( this, pluginName, new Plugin( this, options ) );
                         }
                 });
 
-                return this;
+                return pluginRef;//Will return this or plugin object for external access.
         };
 
 })( jQuery );
